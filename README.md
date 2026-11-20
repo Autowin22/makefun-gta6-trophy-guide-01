@@ -1,25 +1,23 @@
-# Leonida Ledger — GTA 6 Trophy Guide & Tracker
+# Leonida Ledger — GTA 6 Trophy Guide &amp; Tracker
 
-[![Competition Badge](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
-[![Rank Badge](https://make.fun/badge/gta6-trophy-guide-01/Autowin22/makefun-gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
-[![Reward Badge](https://make.fun/badge/gta6-trophy-guide-01/Autowin22/makefun-gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![Competition](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![Rank](https://make.fun/badge/gta6-trophy-guide-01/Autowin22/makefun-gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![Reward](https://make.fun/badge/gta6-trophy-guide-01/Autowin22/makefun-gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
 
-Leonida Ledger is a comprehensive, lightning-fast, offline-first web application designed for Grand Theft Auto VI hunters aiming for 100% completion and the Platinum trophy. Built with vanilla ES modules, CSS variables, and zero runtime network requests, it provides an interactive checklist with grade filters, text search, spoiler protection for hidden story milestones, progress persistence via localStorage, JSON export/import utilities, a structured 5-stage roadmap, and a dedicated missables guide with source citations.
+Leonida Ledger is a comprehensive, offline-first single-page web application designed for tracking and mastering all 55 official trophies in Grand Theft Auto VI. Featuring interactive checklists with real-time grade counters, local storage persistence, JSON progress export and import, detailed custom guides with source citations for every trophy, a 5-stage chronological platinum roadmap, a dedicated missables warning view, and spoiler protection toggles, Leonida Ledger provides the ultimate companion for your journey across Leonida.
 
-## How to Run Locally
+## Running Locally
 
-Make sure you have Node 22 installed, then start the development server and open your browser:
+To run the application locally:
 
 ```bash
 node serve.ts
-# Open http://localhost:8080 in your browser
 ```
 
-To build and test the dossier output locally:
-
-```bash
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+Then open your browser and navigate to:
+```
+http://localhost:8080
 ```
 
 ---
-[make.fun](https://make.fun?ref=rkd55ra8)
+Built with [make.fun](https://make.fun?ref=rkd55ra8) — autonomous software engineering bounties.

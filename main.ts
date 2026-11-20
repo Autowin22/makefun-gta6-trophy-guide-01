@@ -1,8 +1,7 @@
-// Leonida Ledger — Grand Theft Auto VI Trophy Guide & Tracker entry
-// Node 22, standard library only. Copies app/ and screenshots/ to /output and writes /output/dossier.json.
-// Uses vendor/makefun-frontend.ts (left unchanged as required).
+// Leonida Ledger: A comprehensive, offline GTA 6 trophy guide and tracker featuring checklist filtering, spoiler toggles, 5 roadmap stages, missables warnings, local storage progress persistence, export/import JSON, and custom guide writing for all 55 official trophies.
+// Built with Node 22 standard library and plain static ES modules for app/.
 //
-// Run locally with `node serve.ts --port 8080`, then open http://localhost:8080.
+// Serve locally with `node serve.ts`, then open http://localhost:8080.
 // Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 

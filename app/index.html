@@ -3,104 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leonida Ledger — GTA 6 Trophy Guide & Tracker</title>
+  <title>Leonida Ledger — GTA 6 Trophy Guide &amp; Tracker</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="app-header">
-    <div class="header-content">
-      <div class="brand">
-        <svg class="logo-icon" viewBox="0 0 36 36" width="36" height="36" aria-hidden="true">
-          <circle cx="18" cy="18" r="16" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
-          <path d="M18 8l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z" fill="#ffffff"/>
-        </svg>
-        <div>
-          <h1>Leonida Ledger</h1>
-          <p class="subtitle">Grand Theft Auto VI Trophy Guide & Tracker</p>
-        </div>
+  <header>
+    <div class="header-title">
+      <h1>Leonida Ledger</h1>
+      <p>GTA 6 Trophy Guide &amp; Tracker</p>
+    </div>
+    <div class="progress-overview">
+      <div class="progress-stats">
+        <span>Progress: <strong id="progress-count">0</strong> / 55 earned</span>
+        <span id="progress-pct">0%</span>
       </div>
-      <div class="progress-summary">
-        <div class="progress-main">
-          <span id="earned-count">0</span> / <span id="total-count">55</span> Earned (<span id="percent-complete">0%</span>)
-        </div>
-        <div class="progress-bar-container">
-          <div id="progress-bar-fill" class="progress-bar-fill"></div>
-        </div>
-        <div class="grade-counts">
-          <span class="badge badge-platinum">Plat: <span id="plat-count">0/1</span></span>
-          <span class="badge badge-gold">Gold: <span id="gold-count">0/3</span></span>
-          <span class="badge badge-silver">Silver: <span id="silver-count">0/7</span></span>
-          <span class="badge badge-bronze">Bronze: <span id="bronze-count">0/44</span></span>
-        </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progress-bar"></div>
+      </div>
+      <div class="grade-counts">
+        <span class="grade-pill platinum">Plat: <span id="count-platinum">0/1</span></span>
+        <span class="grade-pill gold">Gold: <span id="count-gold">0/2</span></span>
+        <span class="grade-pill silver">Silver: <span id="count-silver">0/7</span></span>
+        <span class="grade-pill bronze">Bronze: <span id="count-bronze">0/45</span></span>
       </div>
     </div>
-    <nav class="nav-tabs">
-      <button class="tab-btn active" data-view="checklist">Checklist</button>
-      <button class="tab-btn" data-view="roadmap">Roadmap</button>
-      <button class="tab-btn" data-view="missables">Missables</button>
-      <div class="header-actions">
-        <button id="export-btn" class="btn btn-secondary" title="Export progress JSON">Export</button>
-        <label class="btn btn-secondary import-label" title="Import progress JSON">
-          Import <input type="file" id="import-file" accept=".json" style="display: none;">
-        </label>
-        <button id="reset-btn" class="btn btn-danger" title="Reset all progress">Reset</button>
-      </div>
-    </nav>
   </header>
 
-  <main class="app-main">
-    <!-- Filters Toolbar (used in checklist view) -->
-    <section id="toolbar" class="toolbar">
-      <div class="search-box">
-        <input type="text" id="search-input" placeholder="Search trophies by name or description..." aria-label="Search trophies">
-      </div>
-      <div class="filters">
-        <select id="filter-kind" aria-label="Filter by kind">
+  <nav class="tabs">
+    <button class="tab-btn active" data-view="checklist">Checklist</button>
+    <button class="tab-btn tab-roadmap" data-view="roadmap">Roadmap</button>
+    <button class="tab-btn tab-missables" data-view="missables">Missables</button>
+  </nav>
+
+  <main>
+    <!-- Checklist View -->
+    <section id="checklist-panel" class="view-panel active">
+      <div class="controls-bar">
+        <input type="text" id="search-input" placeholder="Search trophies by name or description...">
+        <select id="kind-filter">
           <option value="all">All Kinds</option>
           <option value="story">Story</option>
           <option value="missable">Missable</option>
           <option value="collectibles">Collectibles</option>
           <option value="activities">Activities</option>
         </select>
-        <select id="filter-grade" aria-label="Filter by grade">
+        <select id="grade-filter">
           <option value="all">All Grades</option>
           <option value="platinum">Platinum</option>
           <option value="gold">Gold</option>
           <option value="silver">Silver</option>
           <option value="bronze">Bronze</option>
         </select>
-        <label class="spoiler-toggle-label" title="Hide names & descriptions of hidden story trophies until earned">
+        <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; cursor: pointer;">
           <input type="checkbox" id="spoiler-toggle" checked> Hide Spoilers
         </label>
+        <div class="controls-actions">
+          <button class="btn" id="export-btn" title="Export progress JSON">Export</button>
+          <button class="btn" id="import-btn" title="Import progress JSON">Import</button>
+          <input type="file" id="import-file" style="display: none;" accept=".json">
+          <button class="btn btn-danger" id="reset-btn" title="Reset all progress">Reset</button>
+        </div>
+      </div>
+
+      <div class="checklist-layout">
+        <div class="trophy-list" id="trophy-list">
+          <!-- Populated by JS -->
+        </div>
+        <div class="guide-pane" id="guide-pane">
+          <h3>Select a Trophy</h3>
+          <p class="guide-body" style="color: var(--text-secondary);">Click any trophy from the list to view its official details, guide, and sources.</p>
+        </div>
       </div>
     </section>
 
-    <!-- Views Containers -->
-    <div id="view-checklist" class="view-panel active">
-      <div class="checklist-layout">
-        <div class="trophies-list-container">
-          <div id="trophies-list" class="trophies-grid"></div>
+    <!-- Roadmap View -->
+    <section id="roadmap-panel" class="view-panel">
+      <div class="roadmap-container">
+        <div class="roadmap-notice">
+          Roadmap built from the official trophy descriptions. Follow these 5 structured stages from your initial arrival in Vice City to 100% completion and the Platinum trophy.
         </div>
-        <aside id="guide-detail-pane" class="guide-detail-pane">
-          <div class="detail-placeholder">
-            <h3>Select a Trophy</h3>
-            <p>Click any trophy in the checklist or roadmap to view its detailed guide, strategy notes, and source citations.</p>
-          </div>
-        </aside>
+        <div id="roadmap-stages">
+          <!-- Populated by JS -->
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div id="view-roadmap" class="view-panel"></div>
-
-    <div id="view-missables" class="view-panel"></div>
+    <!-- Missables View -->
+    <section id="missables-panel" class="view-panel">
+      <div class="missables-container">
+        <div class="missables-notice">
+          Warning: The following trophies are flagged as missable based on our guide's reading of the official descriptions (not yet verified in-game). Pay attention to timing and one-off choices!
+        </div>
+        <div id="missables-list">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="app-footer">
-    <p>Leonida Ledger — Built for Grand Theft Auto VI. Data from official PSN / Exophase trophy lists. Not affiliated with Rockstar Games.</p>
-  </footer>
-
-  <!-- Shot debug element for automated screenshot validation -->
-  <div id="shot-debug" style="display:none;" aria-hidden="true"></div>
+  <div id="shot-debug"></div>
 
   <script type="module" src="app.js"></script>
 </body>
