@@ -1,5 +1,6 @@
 [
-  { "file": "1-checklist.jpg", "path": "/", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "2-silver.jpg", "path": "/", "grade": "silver", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "3-bronze.jpg", "path": "/", "grade": "bronze", "scroll": 1400, "viewport": { "width": 1280, "height": 800 } }
+  {"name":"1-cover.jpg","query":"?view=checklist&seed=13&spoiler=on","w":1280,"h":800},
+  {"name":"2-guide.jpg","query":"?view=checklist&trophy=17&seed=13&spoiler=off","w":1280,"h":800},
+  {"name":"3-roadmap.jpg","query":"?view=roadmap&seed=13","w":1280,"h":800},
+  {"name":"4-missables.jpg","query":"?view=missables&seed=13","w":1280,"h":800}
 ]

@@ -1,25 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leonida Ledger — GTA 6 Trophy Guide & Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
-</header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
-<script type="module" src="app.js"></script>
+  <header class="app-header">
+    <div class="header-content">
+      <div class="brand">
+        <svg class="logo-icon" viewBox="0 0 36 36" width="36" height="36" aria-hidden="true">
+          <circle cx="18" cy="18" r="16" fill="#f59e0b" stroke="#d97706" stroke-width="2"/>
+          <path d="M18 8l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z" fill="#ffffff"/>
+        </svg>
+        <div>
+          <h1>Leonida Ledger</h1>
+          <p class="subtitle">Grand Theft Auto VI Trophy Guide & Tracker</p>
+        </div>
+      </div>
+      <div class="progress-summary">
+        <div class="progress-main">
+          <span id="earned-count">0</span> / <span id="total-count">55</span> Earned (<span id="percent-complete">0%</span>)
+        </div>
+        <div class="progress-bar-container">
+          <div id="progress-bar-fill" class="progress-bar-fill"></div>
+        </div>
+        <div class="grade-counts">
+          <span class="badge badge-platinum">Plat: <span id="plat-count">0/1</span></span>
+          <span class="badge badge-gold">Gold: <span id="gold-count">0/3</span></span>
+          <span class="badge badge-silver">Silver: <span id="silver-count">0/7</span></span>
+          <span class="badge badge-bronze">Bronze: <span id="bronze-count">0/44</span></span>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-view="checklist">Checklist</button>
+      <button class="tab-btn" data-view="roadmap">Roadmap</button>
+      <button class="tab-btn" data-view="missables">Missables</button>
+      <div class="header-actions">
+        <button id="export-btn" class="btn btn-secondary" title="Export progress JSON">Export</button>
+        <label class="btn btn-secondary import-label" title="Import progress JSON">
+          Import <input type="file" id="import-file" accept=".json" style="display: none;">
+        </label>
+        <button id="reset-btn" class="btn btn-danger" title="Reset all progress">Reset</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="app-main">
+    <!-- Filters Toolbar (used in checklist view) -->
+    <section id="toolbar" class="toolbar">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search trophies by name or description..." aria-label="Search trophies">
+      </div>
+      <div class="filters">
+        <select id="filter-kind" aria-label="Filter by kind">
+          <option value="all">All Kinds</option>
+          <option value="story">Story</option>
+          <option value="missable">Missable</option>
+          <option value="collectibles">Collectibles</option>
+          <option value="activities">Activities</option>
+        </select>
+        <select id="filter-grade" aria-label="Filter by grade">
+          <option value="all">All Grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+        <label class="spoiler-toggle-label" title="Hide names & descriptions of hidden story trophies until earned">
+          <input type="checkbox" id="spoiler-toggle" checked> Hide Spoilers
+        </label>
+      </div>
+    </section>
+
+    <!-- Views Containers -->
+    <div id="view-checklist" class="view-panel active">
+      <div class="checklist-layout">
+        <div class="trophies-list-container">
+          <div id="trophies-list" class="trophies-grid"></div>
+        </div>
+        <aside id="guide-detail-pane" class="guide-detail-pane">
+          <div class="detail-placeholder">
+            <h3>Select a Trophy</h3>
+            <p>Click any trophy in the checklist or roadmap to view its detailed guide, strategy notes, and source citations.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div id="view-roadmap" class="view-panel"></div>
+
+    <div id="view-missables" class="view-panel"></div>
+  </main>
+
+  <footer class="app-footer">
+    <p>Leonida Ledger — Built for Grand Theft Auto VI. Data from official PSN / Exophase trophy lists. Not affiliated with Rockstar Games.</p>
+  </footer>
+
+  <!-- Shot debug element for automated screenshot validation -->
+  <div id="shot-debug" style="display:none;" aria-hidden="true"></div>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>
